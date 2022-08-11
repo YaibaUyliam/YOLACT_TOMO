@@ -1,0 +1,42 @@
+{   
+    "dataset_config":
+        {
+        "name":"Tomo Dataset",
+        "train_images": "/home/crist_tienngoc/TOMO/Multi_object/Dataset/Data_train/train",
+        "train_info":   "/home/crist_tienngoc/TOMO/Multi_object/Dataset/Data_train/train",
+        "calib_images": "/home/crist_tienngoc/TOMO/Multi_object/Dataset/Data_test/test",
+        "valid_images": "/home/crist_tienngoc/TOMO/Multi_object/Dataset/Data_train/val",
+        "valid_info":   "/home/crist_tienngoc/TOMO/Multi_object/Dataset/Data_train/val",
+        
+        "class_names": ["blister", "bottle_cap", "fallen_bottle", "flip_bottle", "bottle_uncap", "tray_hole", "robot_hand", "printer_button", "push_rod", "cuvette_hole", "printer_hole", "swing_bar", "tray"],
+        "label_map": {"1": 1, "2" : 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10, "11": 11, "12": 12, "13": 13},
+        "class_label_dictionary": {"blister": 1, "bottle_cap": 2, "fallen_bottle": 3, "flip_bottle": 4, "bottle_uncap": 5, "tray_hole": 6, "robot_hand": 7, "printer_button": 8, "push_rod": 9, "cuvette_hole": 10, "printer_hole": 11, "swing_bar": 12, "tray": 13}
+        }
+    ,
+    "Yolact_config":
+        {
+            "max_size": 550,
+            "lr_schedule": "step",
+            "lr_steps": [15000, 20000, 25000, 30000],
+            "epochs": 300
+        }
+    ,
+    "Backbone_config":
+        {
+            "pred_scales": [[9], [18], [36], [72], [144]]
+            
+        }
+    ,
+    "Yolact_edge_config":        
+        {
+            "name": "yolact_edge",
+            "torch2trt_max_calibration_images": 100,
+            "torch2trt_backbone_int8": "True",
+            "torch2trt_protonet_int8": "True",
+            "torch2trt_fpn": "True",
+            "torch2trt_prediction_module": "True",
+            "use_fast_nms": "False"
+        }    
+
+
+}
